@@ -1,40 +1,64 @@
 package org.zerock.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.ReviewCriteria;
+import org.zerock.domain.ReviewPageDTO;
 import org.zerock.domain.ReviewVO;
 import org.zerock.mapper.ProductMapper;
+import org.zerock.mapper.ReviewMapper;
 
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
 @AllArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
-	private ProductMapper mapper;
-	
+
+	// springframework 버전 4.3 이상이면 생략가능
+	// @Setter(onMethod_=@Autowired)
+	private ReviewMapper mapper;
+	private ProductMapper productmapper;
+
+	// 리뷰 쓰기
+	@Transactional
 	@Override
-	public ReviewVO getReview(long rno) {
-		log.info("getReview....."+rno);
-		return mapper.readReview(rno);
+	public int register(ReviewVO vo) {
+		log.info("register...." + vo);
+		productmapper.updateReviewCnt(vo.getGdsNum(), 1);
+		return mapper.insert(vo);
 	}
+
+	// 리뷰상세페이지(select된 결과가 한 건이니까 ReviewVO 타입)
 	@Override
-	public List<ReviewVO> getReviewList(ReviewCriteria cri) {
-		log.info("getReviewList........");
-		return mapper.getReviewListWithPaging(cri);
+	public ReviewVO get(int rno) {
+		log.info("get...." + rno);
+		return mapper.read(rno);
 	}
+
+	// 리뷰삭제
+	@Transactional
 	@Override
-	public int getReviewTotalCount(ReviewCriteria cri) {
-		return mapper.getReviewTotalCount(cri);
+	public int remove(int rno) {
+		log.info("remove....." + rno);
+		ReviewVO vo = mapper.read(rno);
+		productmapper.updateReviewCnt(vo.getGdsNum(), -1);
+		return mapper.delete(rno);
 	}
+
+	// 리뷰수정
 	@Override
-	public Iterable<ReviewVO> getReviewList() {
-		// TODO Auto-generated method stub
-		return null;
+	public int modify(ReviewVO vo) {
+		log.info(vo);
+		return mapper.update(vo);
+	}
+
+	// 리뷰목록리스트(select된 결과가 여러 건이니까 ArrayList 타입)
+	@Override
+	public ReviewPageDTO getReviewList(ReviewCriteria rvcri, int gdsNum) {
+		log.info("get Review List of a Product : " + gdsNum);
+		return new ReviewPageDTO(mapper.getReviewCountByGdsNum(gdsNum),
+								 mapper.getReviewListWithPaging(rvcri, gdsNum));
 	}
 }

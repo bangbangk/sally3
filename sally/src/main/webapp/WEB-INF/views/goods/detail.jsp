@@ -8,6 +8,7 @@
 <div id="contents">
 	<!-- 상품 정보 -->
 	<section class="detailHead">
+	<input type="hidden" id="gdsNum" value="${goods.gdsNum}">
 		<!-- 상품 이미지 -->
 		<div class="dhImg">
 			<img src="https://flymodel.co.kr/web/product/big/202106/0fe6be0bfa6de4a41f27193868ff0ce5.webp">
@@ -632,7 +633,7 @@
 				<h3>REVIEW</h3>
 				<p class="st">후기를 확인하세요</p>
 				<ul class="rvList">
-				<c:if test="${reviewlist} != null">
+				<%-- <c:if test="${reviewlist} != null">
 					<c:forEach var="reviewlist" items="${reviewlist}">
 						<li>
 							<div class="rvListIn">
@@ -654,7 +655,7 @@
 							</div>
 						</li>
 					</c:forEach>
-				</c:if>
+				</c:if> --%>
 				</ul>
 			</div>
 

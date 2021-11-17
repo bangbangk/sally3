@@ -1,9 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<link rel="stylesheet" type="text/css" href="resources/css/layout.css?v=3">
-
-<link rel="stylesheet" href="/resources/css/main_footer.css">
-<link rel="stylesheet" href="/resources/css/main_reset.css">
-
 
 <footer id="footer">
 	<div class="f_in">
