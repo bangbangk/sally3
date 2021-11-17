@@ -45,6 +45,6 @@ public interface AdminService {
 	public int memberModify(MemberVO vo);
 	
 	/* 회원 정보 삭제 */
-	public String memberDelete(String memberId);
+	/*public void memberDelete(MemberVO vo);*/
 
 }

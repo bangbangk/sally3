@@ -17,4 +17,7 @@ public interface MemberService {
     
     // 회원정보 수정
     public void updateMember(MemberVO member) throws Exception;
+    
+    // 회원 탈퇴
+ 	public void withdrawal(MemberVO member) throws Exception;
 }

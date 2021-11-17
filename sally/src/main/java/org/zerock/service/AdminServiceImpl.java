@@ -137,23 +137,25 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.memberGetDetail(memberId);
 	}
 	
-	/* 상품 정보 수정 */
+	
+	/* 회원 정보 수정 */
+	@Transactional
 	@Override
 	public int memberModify(MemberVO vo) {
 		
-		log.info("memberModify........");
+		int result = adminMapper.memberModify(vo);
 		
 		return adminMapper.memberModify(vo);
 		
 	}
 	
 	/* 회원 정보 삭제 */
-	@Override
-	public String memberDelete(String memberId) {
+	/*@Override
+	public void memberDelete(MemberVO vo) {
 
 		log.info("memberDelete..........");
 		
-		return adminMapper.memberDelete(memberId);
-	}
+		return;
+	}*/
 	
 }

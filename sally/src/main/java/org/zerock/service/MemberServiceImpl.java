@@ -45,5 +45,12 @@ public class MemberServiceImpl implements MemberService {
     	membermapper.updateMember(member);
     }
     
+	/* 회원 탈퇴 */
+	@Override
+	public void withdrawal(MemberVO member) throws Exception {
+		
+		membermapper.memberDelete(member);
+		
+	}
     
 }

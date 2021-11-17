@@ -23,5 +23,8 @@ public interface MemberMapper {
     // 회원 리스트
     public List<MemberVO> memberList();
  
+    // 회원 탈퇴
+  	public void memberDelete(MemberVO member);
 }
+
 

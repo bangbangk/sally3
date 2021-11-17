@@ -28,8 +28,7 @@
                     				<label>회원 ID</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="memberId" value="${memberInfo.memberId}">
-                    				<span class="ck_warn memberName_warn">회원 이름을 입력해주세요.</span>
+                    				<input name="memberId" value="<c:out value="${memberInfo.memberId}"/>" disabled>
                     			</div>
                     		</div>
                     		
@@ -67,7 +66,7 @@
                    			<div class="btn_section">
                    				<button id="cancelBtn" class="btn">취 소</button>
 	                    		<button id="modifyBtn" class="btn modify_btn">수 정</button>
-	                    		<button id="deleteBtn" class="btn delete_btn">삭 제</button>
+	                    		<!-- <button id="deleteBtn" class="btn delete_btn">삭 제</button> -->
 	                    	</div> 
                     </div>  
                 	<form id="moveForm" action="/admin/memberManage" method="get" >
@@ -94,7 +93,7 @@
 	});
 	
 	/* 삭제 버튼 */
-	$("#deleteBtn").on("click", function(e){
+	/* $("#deleteBtn").on("click", function(e){
 		e.preventDefault();
 		let moveForm = $("#moveForm");
 		moveForm.find("input").remove();
@@ -102,7 +101,7 @@
 		moveForm.attr("action", "/admin/memberDelete");
 		moveForm.attr("method", "post");
 		moveForm.submit();
-	});
+	}); */
  	
  	</script>
  

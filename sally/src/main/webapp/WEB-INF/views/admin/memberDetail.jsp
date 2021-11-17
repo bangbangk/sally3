@@ -75,13 +75,13 @@
                             </div>
                             
                             <div class="btn_section">
-								<button id="cancelBtn" class="btn">상품 목록</button>
+								<button id="cancelBtn" class="btn">회원 목록</button>
 	                    		<button id="modifyBtn" class="btn enroll_btn">수정 </button>
                             </div>
                     </div>
                     
                     
-                    <form id="moveForm" action="/admin/goodsManage" method="get" >
+                    <form id="moveForm" action="/admin/memberManage" method="get" >
  						<input type="hidden" name="pageNum" value="${cri.pageNum}">
 						<input type="hidden" name="amount" value="${cri.amount}">
 						<input type="hidden" name="keyword" value="${cri.keyword}">
