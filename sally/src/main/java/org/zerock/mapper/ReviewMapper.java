@@ -18,6 +18,6 @@ public interface ReviewMapper {
 	public int update(ReviewVO vo);
 	// 리뷰목록리스트(select된 결과가 여러 건이니까 ArrayList 타입)
 	public List<ReviewVO> getReviewListWithPaging(@Param("rvcri") ReviewCriteria rvcri,
-										   @Param("gdsNum") int gdsNum);
+												  @Param("gdsNum") int gdsNum);
 	public int getReviewCountByGdsNum(int gdsNum);
 }

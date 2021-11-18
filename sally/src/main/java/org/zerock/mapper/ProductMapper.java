@@ -1,35 +1,13 @@
 package org.zerock.mapper;
 
-import java.util.List;
-
-import org.zerock.domain.QnaCriteria;
-import org.zerock.domain.ReviewCriteria;
 import org.apache.ibatis.annotations.Param;
-import org.zerock.domain.ProductVO;
-import org.zerock.domain.ReviewVO;
 
-public interface ProductMapper {// �������̽�
+public interface ProductMapper {
+
+	public void updateReviewCnt(@Param("gdsNum") int gdsNum,
+								@Param("rvamount") int rvamount);
 	
-	
-	// 게시판 목록리스트(paging처리 안된거)
-	public List<ProductVO> getList();
-	// 게시판 목록리스트(paging처리 된거)
-	public List<ProductVO> getListWithPaging(QnaCriteria cri);
-	// tbl_board테이블의 전체 갯수
-	public int getTotalCount(QnaCriteria cri);
-	
-	
-	
-	// �߻�޼���(�Խ��� �۾���) - insert�� ó���ǰ� ������ pk���� �� �ʿ䰡 ���� ���(�ܼ� �Խñ۾���)
-	public void insert(ProductVO board);
-	// �߻�޼���(�Խ��� �۾���) - insert���� ����ǰ� ������ pk���� �˾ƾ� �ϴ� ���(�Խñ۾���+÷������)
-	public void insertSelectKey(ProductVO board);
-	// �߻�޼���(�Խ��� ��� ����Ʈ���� ������ Ŭ���� �� ������ �������� ��ȸ)
-	public ProductVO read(long bno);
-	
-	
-	public void updateReviewCnt(@Param("gdsNum") int gdsNum,@Param("rvamount") int rvamount);
-	
-	
+	public void updateQnaCnt(@Param("gdsNum") int gdsNum,
+							 @Param("qnaamount") int qnaamount);
+
 }
-

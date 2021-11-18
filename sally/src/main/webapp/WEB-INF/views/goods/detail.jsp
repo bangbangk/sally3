@@ -633,54 +633,10 @@
 				<h3>REVIEW</h3>
 				<p class="st">후기를 확인하세요</p>
 				<ul class="rvList">
-				<%-- <c:if test="${reviewlist} != null">
-					<c:forEach var="reviewlist" items="${reviewlist}">
-						<li>
-							<div class="rvListIn">
-								<div class="rvBody">
-									<p class="rvScore">${reviewlist.rating}점</p>
-									<div class="rvContent">
-										<a href="#">
-											<p class="rvText">${reviewlist.content}</p>
-											<p class="rvImg">
-												<img src="${reviewlist.reviewimg}" alt="리뷰이미지">
-											</p>
-										</a>
-									</div>
-								</div>
-								<div class="rvInfo">
-									<p class="rviTitle">작성자</p>
-									<p class="rviText">${reviewlist.writer}</p>
-								</div>
-							</div>
-						</li>
-					</c:forEach>
-				</c:if> --%>
 				</ul>
 			</div>
 
 			<div class="pdrPager">
-				<ul class="pagination">
-				<c:if test="${reviewlist} != null">
-					<c:if test="${rvpageMaker.prev}">
-						<li class="paginate_button prev"><a
-							href="/goods/detail?gdsNum=${goods.gdsNum}&rvpageNum=${rvpageMaker.startPage-1}&rvamount=${rvpageMaker.rvcri.rvamount}#productReview">이전</a></li>
-					</c:if>
-					<c:forEach var="num" begin="${rvpageMaker.startPage}"
-						end="${rvpageMaker.endPage}">
-						<li
-							class="paginate_button page-item ${rvpageMaker.rvcri.rvpageNum==num?'active':''}">
-							<a
-							href="/goods/detail?gdsNum=${goods.gdsNum}&rvpageNum=${num}&rvamount=${rvpageMaker.rvcri.rvamount}#productReview"
-							class="page-link">${num}</a>
-						</li>
-					</c:forEach>
-					<c:if test="${rvpageMaker.next}">
-						<li class="paginate_button next"><a
-							href="/goods/detail?gdsNum=${goods.gdsNum}&rvpageNum=${rvpageMaker.endPage+1}&rvamount=${rvpageMaker.rvcri.rvamount}#productReview">다음</a></li>
-					</c:if>
-				</c:if>
-				</ul>
 			</div>
 		</div>
 		<!-- #productReview End -->
@@ -697,8 +653,8 @@
 			<div class="pdQna">
 				<h3>Q&amp;A</h3>
 				<p>상품에 대한 문의사항을 확인해보세요</p>
-				<table border="1px">
-					<tr>
+				<table border="1px" class="qnaTable">
+					<%-- <tr>
 						<th class="t_num">번호</th>
 						<th class="t_title">제목</th>
 						<th class="t_writer">작성자</th>
@@ -711,8 +667,7 @@
 							<td>${qnalist.bno}</td>
 							<td>${qnalist.title}</td>
 							<td>${qnalist.writer}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${qnalist.regdate}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qnalist.regdate}" /></td>
 							<td>${qnalist.views}</td>
 						</tr>
 						<tr class="pdQna_content_wrap">
@@ -721,11 +676,11 @@
 							</td>
 						</tr>
 					</c:forEach>
-					</c:if>
+					</c:if> --%>
 				</table>
 
 				<div class="pdqPager">
-					<ul class="pagination">
+					<%-- <ul class="pagination">
 					<c:if test="${list} != null">
 						<c:if test="${pageMaker.prev}">
 							<li class="paginate_button prev"><a
@@ -745,7 +700,7 @@
 								href="/goods/detail?gdsNum=${goods.gdsNum}&pageNum=${pageMaker.endPage+1}&amount=${pageMaker.qcri.amount}#productQna">다음</a></li>
 						</c:if>
 					</c:if>
-					</ul>
+					</ul> --%>
 				</div>
 				<!-- .pdqPager End -->
 			</div>

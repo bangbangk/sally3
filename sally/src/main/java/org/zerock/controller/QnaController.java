@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.zerock.domain.ReviewCriteria;
-import org.zerock.domain.ReviewPageDTO;
-import org.zerock.domain.ReviewVO;
-import org.zerock.service.ReviewService;
+import org.zerock.domain.QnaCriteria;
+import org.zerock.domain.QnaPageDTO;
+import org.zerock.domain.QnaVO;
+import org.zerock.service.QnaService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -22,67 +22,67 @@ import lombok.extern.log4j.Log4j;
 @RestController
 @Log4j
 @AllArgsConstructor
-@RequestMapping("/reviews")
-public class ReviewController {
+@RequestMapping("/qnas")
+public class QnaController {
 	
-	private ReviewService service;
+	private QnaService service;
 	
 	@PostMapping(value = "/new",
 				consumes = "application/json",
 				produces = { MediaType.TEXT_PLAIN_VALUE })
 // 접근제어자	리턴타입					메소드명
-	public ResponseEntity<String> create(@RequestBody ReviewVO vo) {
-		log.info("ReviewVO : " + vo);
+	public ResponseEntity<String> create(@RequestBody QnaVO vo) {
+		log.info("QnaVO : " + vo);
 		
 		int insertCount = service.register(vo);
 		
-		log.info("Review INSERT COUNT : " + insertCount);
+		log.info("Qna INSERT COUNT : " + insertCount);
 		
 		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	} // 댓글쓰기 끝
 
-	@GetMapping(value = "/pages/{gdsNum}/{reviewPage}",
+	@GetMapping(value = "/pages/{gdsNum}/{qnaPage}",
 				produces = { MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<ReviewPageDTO> getList(
-			@PathVariable("reviewPage") int reviewPage,
+	public ResponseEntity<QnaPageDTO> getList(
+			@PathVariable("qnaPage") int qnaPage,
 			@PathVariable("gdsNum") int gdsNum) {
-		log.info("getReviewList......ReviewController");
-		ReviewCriteria rvcri = new ReviewCriteria(reviewPage, 3);
-		log.info(rvcri);
+		log.info("getQnaList......QnaController");
+		QnaCriteria qnacri = new QnaCriteria(qnaPage, 5);
+		log.info(qnacri);
 		
 		//							select한 결과					통신이 정상적으로 처리
-		return new ResponseEntity<>(service.getReviewList(rvcri, gdsNum), HttpStatus.OK);
+		return new ResponseEntity<>(service.getQnaList(qnacri, gdsNum), HttpStatus.OK);
 	} // 댓글 목록 리스트 끝
 	
-	@GetMapping(value = "/{rno}",
+	@GetMapping(value = "/{bno}",
 				produces = { MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<ReviewVO> get(@PathVariable("rno") int rno) {
-		log.info("get : " + rno);
+	public ResponseEntity<QnaVO> get(@PathVariable("bno") int bno) {
+		log.info("get : " + bno);
 		//							select한 결과			통신이 정상적으로 처리
-		return new ResponseEntity<>(service.get(rno), HttpStatus.OK);
+		return new ResponseEntity<>(service.get(bno), HttpStatus.OK);
 	} // 댓글 상세 페이지
 	
-	@DeleteMapping(value = "/{rno}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> remove(@PathVariable("rno") int rno) {
-		log.info("remove : " + rno);
+	@DeleteMapping(value = "/{bno}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> remove(@PathVariable("bno") int bno) {
+		log.info("remove : " + bno);
 		
-		return service.remove(rno) == 1
+		return service.remove(bno) == 1
 				? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	} // 댓글 삭제
 	
 	@RequestMapping(method = { RequestMethod.PUT, RequestMethod.PATCH },
-			value = "/{rno}",
+			value = "/{bno}",
 			consumes = "application/json",
 			produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> modify(
-					@RequestBody ReviewVO vo,
-					@PathVariable("rno") int rno) {
-		vo.setRno(rno);
+					@RequestBody QnaVO vo,
+					@PathVariable("bno") int bno) {
+		vo.setBno(bno);
 		
-		log.info("rno : " + rno);
+		log.info("bno : " + bno);
 		log.info("modify : " + vo);
 		
 		return service.modify(vo) == 1

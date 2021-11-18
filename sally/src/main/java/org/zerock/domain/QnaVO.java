@@ -5,18 +5,18 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class ProductVO {
-	// �Խ��ǹ�ȣ
+public class QnaVO {
+	// Qna 번호
 	private int bno;
-	// ����
+	// Qna 제목
 	private String title;
-	// ����
+	// Qna 내용
 	private String content;
-	// �ۼ���
+	// 작성자
 	private String writer;
-	// �ۼ�����
+	// 등록일
 	private Date regdate;
-	// ��������
+	// 조회수
 	private int views;
 	// 상품 번호
 	private int gdsNum;
