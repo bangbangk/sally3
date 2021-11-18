@@ -37,4 +37,9 @@
     	where memberId = #{memberId}
     
     </update>
+    
+    <!-- 회원탈퇴 -->
+	<delete id="memberDelete">
+		DELETE FROM member WHERE memberId = #{memberId} AND memberPw = #{memberPw} 
+	</delete>
  </mapper>
