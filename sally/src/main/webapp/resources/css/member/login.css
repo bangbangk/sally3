@@ -8,23 +8,22 @@
 a { text-decoration: none; }
 
 
-/* content 랩 */
-.wrap{
-	width : 800px;
+/* 화면 전체 렙 */
+.wrapper{
+	width: 1200px;
 	margin: 0 auto;
 }
 
-/* 페이지 로고 */
-h2{
-	text-align: center;	
-	margin: 100px 0;
-	font-size:30px;	
+/* content 랩 */
+.wrap{
+	width : 1000px;
+	margin : 100px 0;
 }
 
 /* 로그인 area */
 .id_wrap{
 	width: 100%;
-    margin-top: 20px;
+	margin-top: 20px;
 }
 .id_name{
 	font-size: 15px;
@@ -72,11 +71,9 @@ h2{
 	margin-top: 40px;
 	text-align: center;
 }
-.login_button{
+#login_button{
 	width: 50%;
     height: 50px;
-    border: 1px solid #ccc;
-    background-color: #e5e5e5;
     margin: 0 10px;
 }
 
@@ -116,3 +113,4 @@ h2{
 .clearfix{
 	clear: both;
 }
+

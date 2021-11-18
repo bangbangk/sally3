@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {list-style: none;}
+
+a {text-decoration: none;}
+
+table, th, td {border: none;}
+
+img {
+  border: none;
+  vertical-align: top;
+}
 
 /* 화면 전체 렙 */
 .wrapper{
@@ -10,7 +25,7 @@
 /* content 랩 */
 .wrap{
 	width : 1000px;
-	
+	margin : 100px 0;
 }
 
 
@@ -163,19 +178,27 @@
     cursor: pointer;
 }
 
-/* 가입하기 버튼 */
-.modify_button_wrap{
+/* 탈퇴하기 버튼 */
+.withdrawal_button_wrap{
 	margin-top: 40px;
 	text-align: center;
 }
-.modify_button{
+.withdrawal_button{
 	width: 50%;
     height: 50px;
     border: 1px solid #ccc;
     background-color: #e5e5e5;
-    margin: 0 10px;
+    margin: 10px;
 }
-
+.home_button{
+	display : inline-block;
+	width: 50%;
+    height: 50px;
+    border: 1px solid #ccc;
+    background-color: #e5e5e5;
+    margin: 10px;
+    line-height: 50px;
+}
 /* 유효성 검사 문구 */
  
 .final_id_ck{display: none;}

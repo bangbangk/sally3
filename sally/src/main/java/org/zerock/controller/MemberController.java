@@ -141,6 +141,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/withdrawal", method = RequestMethod.POST)
 	public String WithdrawalPOST(HttpSession httpsession, RedirectAttributes rttr, MemberVO member) throws Exception {
+		
 		memberservice.withdrawal(member);
 		httpsession.invalidate();
 		
@@ -149,4 +150,5 @@ public class MemberController {
 
     
 }
+
 

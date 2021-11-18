@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	
+<jsp:include page="/WEB-INF/views/main_header.jsp"></jsp:include>
+	
+<link rel="stylesheet" type="text/css" href="/resources/css/main/layout.css">
+<link rel="stylesheet" href="/resources/css/main_reset.css">
+<link rel="stylesheet" href="/resources/css/main_header.css">
+<link rel="stylesheet" href="/resources/css/main_footer.css">
 <link rel="stylesheet" href="/resources/css/member/login.css">
-</head>
-<body>
-	<div class="wrap">
-		<form id="login_form" method="post">
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<div class="wrapper">
+	<form id="login_form" method="post">
+		<div class="wrap">
  			<h2>로그인</h2>
 			<div class="login_wrap"> 
 				<div class="id_wrap">
@@ -31,7 +35,7 @@
                 	<div class = "login_warn">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
             	</c:if>
 				<div class="login_button_wrap">
-					<input type="button" class="login_button" value="로그인">
+					<input type="button" id="login_button" value="로그인">
 				</div>
 				
 				<div class="Login_find">
@@ -41,19 +45,19 @@
 	            </div>
 	
 	            <div class="Login_join_button">
-	                <a href="">회원가입하기</a>
+	                <a href="/member/join">회원가입하기</a>
 	            </div>
 			</div>
-		</form>
-	
-	
-	</div>
+		</div>
+	</form>
+</div>
+
     <script>
  
     /* 로그인 버튼 클릭 메서드 */
-    $(".login_button").click(function(){
+    $("#login_button").click(function(){
         
-        //alert("로그인 버튼 작동");
+        /* alert("로그인 버튼 작동"); */
         
     	/* 로그인 메서드 서버 요청 */
         $("#login_form").attr("action", "/member/login");
@@ -62,5 +66,5 @@
     });
  
 	</script>
-</body>
-</html>
+	
+<jsp:include page="/WEB-INF/views/main_footer.jsp"></jsp:include>

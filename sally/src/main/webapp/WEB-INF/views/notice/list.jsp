@@ -14,7 +14,7 @@
             <h2>NOTICE</h2>
             <div class="board_menu">
                 <ul>
-                    <li class="on"><a href="">공지사항</a></li>
+                    <li class="on"><a href="/notice/list">공지사항</a></li>
                     <li><a href="">상품문의</a></li>
                     <li><a href="">상품후기</a></li>
                 </ul>
@@ -48,44 +48,90 @@
 				</table>
 				<fieldset>
                     <legend>게시물 검색</legend>
-                        <select name="search_date" id="search_date">
+                      <!--  <select name="search_date" id="search_date">
                             <option value="week">일주일</option>
                             <option value="month">한달</option>
                             <option value="3month">세달</option>
                             <option value="all">전체</option>
-                        </select>
-                        <select name="search_key" id="search_key">
-                            <option value="title">제목</option>
-                            <option value="content">내용</option>
-                            <option value="name">글쓴이</option>
-                        </select>
-                        <input type="text" id="search_box">
-                        <a href="" class="search_btn">찾기</a>
+                        </select> --> 
+					<select name="searchType" id="search_key">
+					    <option selected value="T" <c:out value="${pageMake.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+						<option value="C" <c:out value="${pageMake.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+					    <option value="W" <c:out value="${pageMake.cri.type eq 'W'?'selected':'' }"/>>작성자</option>
+	                </select>	                        
+	            	<div class="search_wrap">
+       					<div class="search_area">
+	                        <input type="text" id="search_box" name="keyword" value="${pageMake.cri.keyword}">
+	                        <button type="button" id="searchBtn" class="search_btn" style="cursor: pointer">찾기</button>
+                		</div>
+                	</div>
                 </fieldset>
 			</div>
 			<div class="notice_pager">
 				<div class="notice_pager_in">			
-					<ul>
-						<li class="on">
-							<a href="/notice/listPage?num=1">1</a>
-						</li>
-						<li>
-							<a href="/notice/listPage?num=2">2</a>
-						</li>
-						<li>
-							<a href="/notice/listPage?num=3">3</a>
-						</li>
-						<li>
-							<a href="/notice/listPage?num=4">4</a>
-						</li>
-						<li>
-							<a href="/notice/listPage?num=5">5</a>
-						</li>
+					<ul id="pageInfo" class="pageInfo">
+						<c:forEach var="num" begin="${pageMake.startPage}" end="${pageMake.endPage}">
+							<li class="pageInfo_btn "><a href="${num}">${num}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
         	</div>
+        	<form id="moveForm" method="get">
+        		<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
+        		<input type="hidden" name="amount" value="${pageMake.cri.amount}"> 
+        		<input type="hidden" name="keyword" value="${pageMake.cri.keyword}">
+        		<input type="hidden" name="type" value="${pageMake.cri.type}">
+            </form>
 		</div>
     </div>
-    <%@include file="../include/include_footer.jsp"%>
+    
+    <script>
+    let moveForm = $("#moveForm");
+    
+    $(".move").on("click", function(e){
+    	e.preventDefault();
+    	
+    	moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+"'>");
+    	moveForm.attr("action", "notice/view");
+    	moveForm.submit();
+    })
+    
+    
+    $(".pageInfo a").on("click", function(e){
+    	 
+        e.preventDefault();
+        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+        moveForm.attr("action", "/notice/list");
+        moveForm.submit();
+        
+    });
+    
+    $(".search_area button").on("click", function(e){
+        e.preventDefault();
+        
+        let type = $(".search_area select").val();
+        let keyword = $(".search_area input[name='keyword']").val();
+        
+        if(!type){
+            alert("검색 종류를 선택하세요.");
+            return false;
+        }
+        
+        if(!keyword){
+            alert("키워드를 입력하세요.");
+            return false;
+        }        
+        
+        moveForm.find("input[name='type']").val(type);
+        moveForm.find("input[name='keyword']").val(keyword);
+        moveForm.find("input[name='pageNum']").val(1);
+        moveForm.submit();
+    });
+    
+    
+    
+    
+    </script>
+   <%@include file="../include/include_footer.jsp"%>
 </body>
 </html>
