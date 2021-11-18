@@ -28,7 +28,7 @@
                             <a class="admin_list_02" href="/admin/goodsManage">상품 관리</a>
                         </li>
                         <li>
-                            <a class="admin_list_03" href="/admin/noticeEnroll">공지사항</a>                            
+                            <a class="admin_list_03" href="/admin/noticeManage">공지사항</a>                            
                         </li>
                         <li>
                             <a class="admin_list_04" href="/admin/orderManage">주문 관리</a>                            

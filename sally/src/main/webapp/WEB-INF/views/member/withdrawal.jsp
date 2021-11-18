@@ -1,45 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	
+<jsp:include page="/WEB-INF/views/main_header.jsp"></jsp:include>
+	
+<link rel="stylesheet" type="text/css" href="/resources/css/main/layout.css">
+<link rel="stylesheet" href="/resources/css/main_header.css">
+<link rel="stylesheet" href="/resources/css/main_footer.css">
 <link rel="stylesheet" href="/resources/css/member/withdrawal.css">
+
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-</head>
-<body>
-	<div class="wrapper">
-	<form id="modify_form" method="post">
+<div class="wrapper">
+	<form id="withdrawal_form" method="post">
 		<div class="wrap">
-				<h2>회원탈퇴</h2>
-				<div class="id_wrap">
-					<div class="id_name">아이디</div>
-					<input class="id_input_box" class="form-control" type="text" id="memberId" name="memberId" value="${member.memberId}" readonly="readonly"/>
-				</div>
-				<div class="pw_wrap">
-					<div class="pw_name">비밀번호</div>
-					<div class="pw_input_box">
-						<input type="password" class="pw_input" name="memberPw">
-					</div>
-					<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
-				</div>
-				<div class="pwck_wrap">
-					<div class="pwck_name">비밀번호 확인</div>
-					<div class="pwck_input_box">
-						<input type="password" class="pwck_input">
-					</div>
-					<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
-					<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
-                	<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
-				</div>				
-				<div class="modify_button_wrap">
-					<button type="submit">회원탈퇴</button>
-					<a href="/sally">처음으로</a>
-				</div>
+			<h2>회원탈퇴</h2>
+			<div class="id_wrap">
+				<div class="id_name">아이디</div>
+				<input class="id_input_box" class="form-control" type="text" id="memberId" name="memberId" value="${member.memberId}" readonly="readonly"/>
 			</div>
-		</form>
-	</div>
+			<div class="pw_wrap">
+				<div class="pw_name">비밀번호</div>
+				<div class="pw_input_box">
+					<input type="password" class="pw_input" name="memberPw">
+				</div>
+				<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
+			</div>
+			<div class="pwck_wrap">
+				<div class="pwck_name">비밀번호 확인</div>
+				<div class="pwck_input_box">
+					<input type="password" class="pwck_input">
+				</div>
+				<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
+				<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
+               	<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
+			</div>				
+			<div class="withdrawal_button_wrap">
+				<input type="submit" class="withdrawal_button" value="회원탈퇴">
+				<a class="home_button" href="/sally">메인페이지로</a>
+			</div>
+		</div>
+	</form>
+</div>
     
     <script>
     
@@ -49,8 +51,7 @@
     var pwckcorCheck = false;        // 비번 확인 일치 확인
 
 	$(document).ready(function(){
-		//회원가입 버튼(회원가입 기능 작동)
-		$(".modify_button").click(function(){
+		$("#withdrawal_button").click(function(){
 			
 			 /* 입력값 변수 */
 	        var pw = $('.pw_input').val();                // 비밀번호 입력란
@@ -107,5 +108,4 @@
 	});    
 
 	</script>
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/main_footer.jsp"></jsp:include>

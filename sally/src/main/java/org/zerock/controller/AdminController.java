@@ -81,7 +81,7 @@ public class AdminController {
     }
   
     /* 공지사항 관리 페이지 접속 */
-    @RequestMapping(value = "noticeEnroll", method = RequestMethod.GET)
+    @RequestMapping(value = "noticeManage", method = RequestMethod.GET)
     public void noticeManageGET() throws Exception{
         log.info("공지사항 페이지 접속");
     }

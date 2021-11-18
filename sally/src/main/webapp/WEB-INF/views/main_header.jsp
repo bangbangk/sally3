@@ -43,8 +43,7 @@
 
 				<div class="logo">
 					<div class="logo_in">
-						<a href=""> <img src="resources/css/img/main/mainlogo1.jpg"
-							alt="">
+						<a href="/sally"> <img src="resources/css/img/main/mainlogo1.jpg" alt="">
 							<p class="h_logo_name">Sally</p>
 						</a>
 					</div>

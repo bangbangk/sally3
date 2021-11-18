@@ -1,68 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	
+<jsp:include page="/WEB-INF/views/main_header.jsp"></jsp:include>
+	
+<link rel="stylesheet" type="text/css" href="/resources/css/main/layout.css">
 <link rel="stylesheet" href="/resources/css/member/update.css">
+<link rel="stylesheet" href="/resources/css/main_header.css">
+<link rel="stylesheet" href="/resources/css/main_footer.css">
+
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-</head>
-<body>
-	<div class="wrapper">
+
+<div class="wrapper">
 	<form id="modify_form" method="post">
 		<div class="wrap">
-				<h2>회원개인정보 수정</h2>
-				<div class="id_wrap">
-					<div class="id_name">아이디</div>
-					<input class="id_input_box" class="form-control" type="text" id="memberId" name="memberId" value="${member.memberId}" readonly="readonly"/>
-				</div>
-				<div class="pw_wrap">
-					<div class="pw_name">비밀번호</div>
-					<div class="pw_input_box">
-						<input type="password" class="pw_input" name="memberPw">
-					</div>
-					<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
-				</div>
-				<div class="pwck_wrap">
-					<div class="pwck_name">비밀번호 확인</div>
-					<div class="pwck_input_box">
-						<input type="password" class="pwck_input">
-					</div>
-					<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
-					<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
-                	<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
-				</div>
-				<div class="user_wrap">
-					<div class="user_name">이름</div>
-					<div class="user_input_box">
-						<input class="user_input" name="memberName">
-					</div>
-					<span class="final_name_ck">이름을 입력해주세요.</span>
-				</div>
-				<div class="mail_wrap">
-					<div class="mail_name">이메일</div> 
-					<div class="mail_input_box">
-						<input class="mail_input" name="memberEmail">
-					</div>
-					<span class="final_mail_ck">이메일을 입력해주세요.</span>
-					<div class="mail_check_wrap">
-						<div class="mail_check_input_box">
-							<input class="mail_check_input">
-						</div>
-						<div class="mail_check_button">
-							<span>인증번호 전송</span>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>				
-				<div class="modify_button_wrap">
-					<input type="button" class="modify_button" value="수정하기">
-					<a href="/member/withdrawal">회원탈퇴</a>
-				</div>
+			<h2>회원개인정보 수정</h2>
+			<div class="id_wrap">
+				<div class="id_name">아이디</div>
+				<input class="id_input_box" class="form-control" type="text" id="memberId" name="memberId" value="${member.memberId}" readonly="readonly"/>
 			</div>
-		</form>
-	</div>
+			<div class="pw_wrap">
+				<div class="pw_name">비밀번호</div>
+				<div class="pw_input_box">
+					<input type="password" class="pw_input" name="memberPw">
+				</div>
+				<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
+			</div>
+			<div class="pwck_wrap">
+				<div class="pwck_name">비밀번호 확인</div>
+				<div class="pwck_input_box">
+					<input type="password" class="pwck_input">
+				</div>
+				<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
+				<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
+               	<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
+			</div>
+			<div class="user_wrap">
+				<div class="user_name">이름</div>
+				<div class="user_input_box">
+					<input class="user_input" name="memberName">
+				</div>
+				<span class="final_name_ck">이름을 입력해주세요.</span>
+			</div>
+			<div class="mail_wrap">
+				<div class="mail_name">이메일</div> 
+				<div class="mail_input_box">
+					<input class="mail_input" name="memberEmail">
+				</div>
+				<span class="final_mail_ck">이메일을 입력해주세요.</span>
+				<div class="mail_check_wrap">
+					<div class="mail_check_input_box">
+						<input class="mail_check_input">
+					</div>
+					<div class="mail_check_button">
+						<span>인증번호 전송</span>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>				
+			<div class="modify_button_wrap">
+				<input type="button" class="modify_button" value="수정하기">
+				<a class="withdrawal_button" href="/member/withdrawal">회원탈퇴</a>
+			</div>
+		</div>
+	</form>
+</div>
     
     <script>
     
@@ -77,7 +80,6 @@
     var mailnumCheck = false;        // 이메일 인증번호 확인
 
 	$(document).ready(function(){
-		//회원가입 버튼(회원가입 기능 작동)
 		$(".modify_button").click(function(){
 			
 			 /* 입력값 변수 */
@@ -154,5 +156,5 @@
 	});    
 
 	</script>
-</body>
-</html>
+	
+<jsp:include page="/WEB-INF/views/main_footer.jsp"></jsp:include>

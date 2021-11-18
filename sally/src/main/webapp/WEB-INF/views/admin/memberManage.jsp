@@ -26,7 +26,7 @@
 	                    				<td class="th_column_2">회원 이름</td>
 	                    				<td class="th_column_3">email</td>
 	                    				<td class="th_column_4">가입일</td>
-	                    				<td class="th_column_5">비고</td>
+	                    				<!-- <td class="th_column_5">비고</td> -->
 	                    			</tr>
 	                    		</thead>
 	                    		<c:forEach items="${list}" var="memberList">
@@ -39,7 +39,7 @@
 	                    			<td><c:out value="${memberList.memberName}"></c:out></td>
 	                    			<td><c:out value="${memberList.memberEmail}"></c:out></td>
 	                    			<td><fmt:formatDate value="${memberList.regDate}" pattern="yyyy-MM-dd"/></td>
-	                    			<td>기타버튼</td>
+	                    			<!-- <td></td> -->
 	                    		</tr>
 	                    		</c:forEach>
 	                    	</table>
