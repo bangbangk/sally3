@@ -654,53 +654,9 @@
 				<h3>Q&amp;A</h3>
 				<p>상품에 대한 문의사항을 확인해보세요</p>
 				<table border="1px" class="qnaTable">
-					<%-- <tr>
-						<th class="t_num">번호</th>
-						<th class="t_title">제목</th>
-						<th class="t_writer">작성자</th>
-						<th class="t_date">작성일</th>
-						<th class="t_view">조회</th>
-					</tr>
-					<c:if test="${list} != null">
-					<c:forEach var="qnalist" items="${list}">
-						<tr class="pdQna_contentShow">
-							<td>${qnalist.bno}</td>
-							<td>${qnalist.title}</td>
-							<td>${qnalist.writer}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qnalist.regdate}" /></td>
-							<td>${qnalist.views}</td>
-						</tr>
-						<tr class="pdQna_content_wrap">
-							<td colspan="5" style="display: none;">
-								<div class="pdQna_content">${qnalist.content}</div>
-							</td>
-						</tr>
-					</c:forEach>
-					</c:if> --%>
 				</table>
 
 				<div class="pdqPager">
-					<%-- <ul class="pagination">
-					<c:if test="${list} != null">
-						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button prev"><a
-								href="/goods/detail?gdsNum=${goods.gdsNum}&pageNum=${pageMaker.startPage-1}&amount=${pageMaker.qcri.amount}#productQna">이전</a></li>
-						</c:if>
-						<c:forEach var="num" begin="${pageMaker.startPage}"
-							end="${pageMaker.endPage}">
-							<li
-								class="paginate_button page-item ${pageMaker.qcri.pageNum==num?'active':''}">
-								<a
-								href="/goods/detail?gdsNum=${goods.gdsNum}&pageNum=${num}&amount=${pageMaker.qcri.amount}#productQna"
-								class="page-link">${num}</a>
-							</li>
-						</c:forEach>
-						<c:if test="${pageMaker.next}">
-							<li class="paginate_button next"><a
-								href="/goods/detail?gdsNum=${goods.gdsNum}&pageNum=${pageMaker.endPage+1}&amount=${pageMaker.qcri.amount}#productQna">다음</a></li>
-						</c:if>
-					</c:if>
-					</ul> --%>
 				</div>
 				<!-- .pdqPager End -->
 			</div>
