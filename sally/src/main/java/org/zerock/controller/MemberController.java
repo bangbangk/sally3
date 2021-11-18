@@ -3,8 +3,6 @@ package org.zerock.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/*import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -135,5 +133,20 @@ public class MemberController {
     	
     	return "redirect:/sally";
     }
+    
+    @RequestMapping(value = "/withdrawal", method = RequestMethod.GET)
+	public void WithdrawalGET() throws Exception {
+    	
+	}
+	
+	@RequestMapping(value = "/withdrawal", method = RequestMethod.POST)
+	public String WithdrawalPOST(HttpSession httpsession, RedirectAttributes rttr, MemberVO member) throws Exception {
+		memberservice.withdrawal(member);
+		httpsession.invalidate();
+		
+		return "redirect:/sally";
+	}
+
+    
 }
 

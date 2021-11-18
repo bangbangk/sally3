@@ -53,6 +53,6 @@ public interface AdminMapper {
 	public int memberModify(MemberVO vo);
 	
 	/* 회원 정보 삭제 */
-	public String memberDelete(String memberId);
+	/*public String memberDelete(String memberId);*/
 	
 }

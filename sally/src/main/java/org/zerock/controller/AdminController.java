@@ -376,7 +376,7 @@ public class AdminController {
     
     /* 회원 정보 삭제 */
 	@PostMapping("/memberDelete")
-	public String memberDeletePOST(String memberId, RedirectAttributes rttr) {
+	/*public String memberDeletePOST(String memberId, RedirectAttributes rttr) {
 		
 		log.info("memberDeletePOST..........");
 		
@@ -386,5 +386,5 @@ public class AdminController {
 		
 		return "redirect:/admin/memberManage";
 		
-	}
+	}*/
 }
